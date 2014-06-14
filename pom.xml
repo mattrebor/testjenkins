@@ -6,7 +6,7 @@
 	<artifactId>testjenkins</artifactId>
 	<name>testjenkins</name>
 	<packaging>war</packaging>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.2</version>
 	<properties>
 		<java-version>1.6</java-version>
 		<org.springframework-version>3.1.1.RELEASE</org.springframework-version>
@@ -153,6 +153,28 @@
                     <mainClass>org.test.int1.Main</mainClass>
                 </configuration>
             </plugin>
+
+
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>versions-maven-plugin</artifactId>
+            <version>2.1</version>
+        </plugin>
+        <plugin>
+            <artifactId>maven-scm-plugin</artifactId>
+            <version>1.8.1</version>
+            <configuration>
+                <tag>${project.artifactId}-${project.version}</tag>
+            </configuration>
+        </plugin>
+
         </plugins>
+        
+        
     </build>
+    
+    
+    <scm>
+    	<connection>scm:git:https://github.com/mattrebor/testjenkins.git</connection>
+    </scm>
 </project>
