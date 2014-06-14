@@ -175,6 +175,6 @@
     
     
     <scm>
-    	<connection>scm:git:https://github.com/mattrebor/testjenkins.git</connection>
+    	<connection>scm:git:git@github.com:mattrebor/testjenkins.git</connection>
     </scm>
 </project>
