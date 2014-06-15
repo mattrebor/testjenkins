@@ -176,4 +176,17 @@
     <scm>
     	<connection>scm:git:git@github.com:mattrebor/testjenkins.git</connection>
     </scm>
+    
+<distributionManagement>
+  <repository>
+     <id>deployment</id>
+     <name>Internal Releases</name>
+     <url>http://localhost:8081/nexus/content/repositories/releases/</url>
+  </repository>
+  <snapshotRepository>
+     <id>deployment</id>
+     <name>Internal Releases</name>
+     <url>http://localhost:8081/nexus/content/repositories/snapshots/</url>
+  </snapshotRepository>
+</distributionManagement>    
 </project>
