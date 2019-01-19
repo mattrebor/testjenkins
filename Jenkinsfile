@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh '/Users/rob/Downloads/apache-maven-3.6.0/bin/mvn tomcat7:deploy-only' 
+                sh '/Users/rob/Downloads/apache-maven-3.6.0/bin/mvn tomcat7:deploy-only -Dmaven.tomcat.update=true' 
             }
         }
     }
