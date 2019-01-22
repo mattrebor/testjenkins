@@ -17,6 +17,15 @@ pipeline {
             }
         }
 
+        stage('Validaton') {
+            steps {
+                httpRequest consoleLogResponseBody: true,
+                url: "${validation_url}",
+                validResponseCodes: '200',
+                validResponseContent: 'Deployed Tag: '
+            }
+        }
+
     }
     post {
             always {
