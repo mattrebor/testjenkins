@@ -13,7 +13,7 @@ pipeline {
         
         stage('Deploy') {
             steps {
-               sh 'mvn tomcat7:deploy-only -Dmaven.tomcat.update=true'
+               sh 'mvn tomcat7:deploy-only'
             }
         }
 
