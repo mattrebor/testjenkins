@@ -19,10 +19,12 @@ pipeline {
 
         stage('Validaton') {
             steps {
+                sleep 10
+
                 httpRequest consoleLogResponseBody: true,
                 url: "${validation_url}",
                 validResponseCodes: '200',
-                validResponseContent: 'Deployed Tag: '
+                validResponseContent: 'Deployed Tag: ${env.TAG_NAME}'
             }
         }
 
@@ -30,9 +32,9 @@ pipeline {
     post {
             always {
 
-                emailext to: "jenkins", body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\n More info at: ${env.BUILD_URL}",
+                emailext to: "jenkins", body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\nDuration: ${currentBuild.duration} ms",
                 recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
-                subject: "Jenkins Build : Job ${env.JOB_NAME} - ${env.TAG_NAME} - ${currentBuild.currentResult}"
+                subject: "Jenkins Build : Job ${env.JOB_NAME} - ${currentBuild.currentResult}"
 
             }
     }
