@@ -32,9 +32,9 @@ pipeline {
     post {
             always {
 
-                emailext to: "jenkins", body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\nDuration: ${currentBuild.duration} ms",
+                emailext to: "jenkins", body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\nDuration: ${currentBuild.duration} ms\n\nCauses:\n${currentBuild.getBuildCauses}",
                 recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
-                subject: "Jenkins Build : Job ${env.JOB_NAME} - ${currentBuild.currentResult}"
+                subject: "Jenkins Build : ${currentBuild.currentResult} ${env.JOB_NAME}"
 
             }
     }
