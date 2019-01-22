@@ -13,6 +13,10 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 		<!--suppress UnresolvedMavenProperty -->
 		<my.tag>${env.TAG_NAME}</my.tag>
+		<!--suppress UnresolvedMavenProperty -->
+		<tomcat.username>${env.TOMCAT_U}</tomcat.username>
+		<!--suppress UnresolvedMavenProperty -->
+		<tomcat.password>${env.TOMCAT_P}</tomcat.password>
 	</properties>
 	<dependencies>
 		<!-- Spring -->
@@ -123,7 +127,8 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <configuration>
+				<version>2.2</version>
+				<configuration>
                         <filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
                 </configuration>
             </plugin>
@@ -184,7 +189,7 @@
           <configuration>
             <!--suppress UnresolvedMavenProperty -->
             <url>${env.DEPLOY_URL}</url>
-            <server>TomcatServer</server>
+            <!--<server>TomcatServer</server>-->
             <path>/foo</path>  
           </configuration>
         </plugin>
