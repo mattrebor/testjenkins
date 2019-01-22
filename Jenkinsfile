@@ -22,7 +22,7 @@ pipeline {
                 sleep 10
 
                 httpRequest consoleLogResponseBody: true,
-                url: "${validation_url}",
+                url: "${VALIDATION_URL}",
                 validResponseCodes: '200',
                 validResponseContent: "Deployed Tag: ${env.TAG_NAME}"
             }
@@ -32,7 +32,7 @@ pipeline {
     post {
             always {
 
-                emailext to: "jenkins", body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\nDuration: ${currentBuild.duration} ms\n\nCauses:\n${currentBuild.getBuildCauses}",
+                emailext to: "jenkins", body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}\nDuration: ${currentBuild.duration} ms\n\nCauses:\n${currentBuild.buildCauses}",
                 recipientProviders: [[$class: 'DevelopersRecipientProvider'], [$class: 'RequesterRecipientProvider']],
                 subject: "Jenkins Build : ${currentBuild.currentResult} ${env.JOB_NAME}"
 
