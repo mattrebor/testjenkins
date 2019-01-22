@@ -19,7 +19,7 @@ pipeline {
 
         stage('Validate') {
             steps {
-                sleep ${SLEEP_INTERVAL}
+                sleep "${SLEEP_INTERVAL}"
 
                 httpRequest consoleLogResponseBody: true,
                 url: "${VALIDATION_URL}",
