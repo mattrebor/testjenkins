@@ -18,7 +18,7 @@ import javax.servlet.ServletContext;
  * Handles requests for the application home page.
  */
 @Controller
-public class TagControllera {
+public class TagController {
 	
 	@Autowired
 	ServletContext context;
