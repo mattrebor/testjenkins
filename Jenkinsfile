@@ -24,7 +24,7 @@ pipeline {
                 httpRequest consoleLogResponseBody: true,
                 url: "${validation_url}",
                 validResponseCodes: '200',
-                validResponseContent: 'Deployed Tag: ${env.TAG_NAME}'
+                validResponseContent: "Deployed Tag: ${env.TAG_NAME}"
             }
         }
 
