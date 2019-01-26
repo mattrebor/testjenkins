@@ -6,14 +6,14 @@ pipeline {
     stages {
         stage('Build') { 
             steps {
-                sh 'env' 
-                sh 'mvn -B clean package'
+                bat 'set'
+                bat 'mvn -B clean package'
             }
         }
         
         stage('Deploy') {
             steps {
-               sh 'mvn tomcat7:deploy-only'
+               sh 'mvn -X tomcat7:deploy-only'
             }
         }
 
