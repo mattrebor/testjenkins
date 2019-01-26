@@ -7,13 +7,15 @@ pipeline {
         stage('Build') { 
             steps {
                 bat 'set'
+                bat 'set MAVEN_OPTS=-Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2
                 bat 'mvn -B clean package'
             }
         }
         
         stage('Deploy') {
             steps {
-               sh 'mvn -X tomcat7:deploy-only'
+               bat 'set MAVEN_OPTS=-Dhttps.protocols=TLSv1,TLSv1.1,TLSv1.2
+               bat 'mvn -X tomcat7:deploy-only'
             }
         }
 
